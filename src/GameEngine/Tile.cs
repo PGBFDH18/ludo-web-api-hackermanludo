@@ -50,6 +50,20 @@ namespace GameEngine
             return true;
         }
 
+        public bool RemovePieceFromTile(Piece piece)
+        {
+            for (int i = 0; i < PieceList.Count; i++)
+            {
+                if (PieceList[i] == piece)
+                {
+                    PieceList.RemoveAt(i);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
        
     }
 }

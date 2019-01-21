@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackermanLudoApi", "HackermanLudoApi\HackermanLudoApi.csproj", "{ACD226B4-6A05-4798-9E82-48E03294FCDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HackermanLudoApi", "HackermanLudoApi\HackermanLudoApi.csproj", "{ACD226B4-6A05-4798-9E82-48E03294FCDC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameEngine", "GameEngine\GameEngine.csproj", "{1293AFFB-6447-411C-AB10-8D5DF7722F33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOfEngine", "TestOfEngine\TestOfEngine.csproj", "{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,18 @@ Global
 		{1293AFFB-6447-411C-AB10-8D5DF7722F33}.Release|x64.Build.0 = Release|Any CPU
 		{1293AFFB-6447-411C-AB10-8D5DF7722F33}.Release|x86.ActiveCfg = Release|Any CPU
 		{1293AFFB-6447-411C-AB10-8D5DF7722F33}.Release|x86.Build.0 = Release|Any CPU
+		{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}.Debug|x64.Build.0 = Debug|Any CPU
+		{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}.Debug|x86.Build.0 = Debug|Any CPU
+		{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}.Release|x64.ActiveCfg = Release|Any CPU
+		{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}.Release|x64.Build.0 = Release|Any CPU
+		{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}.Release|x86.ActiveCfg = Release|Any CPU
+		{F1B4651E-E641-4E54-85E3-1E17EFCFEEE2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

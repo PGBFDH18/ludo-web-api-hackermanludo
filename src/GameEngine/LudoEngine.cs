@@ -6,7 +6,7 @@ namespace GameEngine
 {
     public class LudoEngine
     {
-        public int Counter = 0;
+        public int ActivePlayer = 0;
         private int LastDiceThrow { get; set; }
         private int nrOfPlayer;
         public bool OkToStart { get; set; }
@@ -29,6 +29,8 @@ namespace GameEngine
                 }
             }
         }
+
+
         public List<Player> PlayersList { get; set; }
 
         public List<Tile> TileList { get; set; }
@@ -61,192 +63,180 @@ namespace GameEngine
 
         }
 
-        
-
-        public bool MovePiece(int PieceNr)
-        {
-            Piece tempPiece = PlayersList[Counter].Pieces[PieceNr - 1];
-
-            if (tempPiece.InNest)
-            {
-                PieceFromNest(PieceNr);
-                return true;
-            }
-            else
-            {
-                if (tempPiece.Movement + LastDiceThrow >= 40)
-                {
-                    tempPiece.CompleteLap = true;   
-                }
-                int location = tempPiece.StartLocation + (tempPiece.Movement - 1);
-                int nextLocation = location + LastDiceThrow;
-                int finalStretchLocation = 0;
-                bool newLap = false;
-
-                if (location >= 40)
-                {
-                    location -= 40;
-                }
-
-                if (tempPiece.CompleteLap) //(tempPiece.Movement + LastDiceThrow >= 40)
-                {
-
-                    finalStretchLocation = ((tempPiece.Movement + LastDiceThrow) - 41);
-                    FinalStretch[finalStretchLocation].AddPieceToTile(tempPiece);
-
-                    for (int i = 0; i < TileList.Count && location <= 40; i++)
-                    {
-                        if (tempPiece.PlayerColor == TileList[location].PieceList[i].PlayerColor && tempPiece.PieceName == TileList[location].PieceList[i].PieceName)
-                        {
-                            TileList[location].PieceList.RemoveAt(i);
-                            tempPiece.Movement += LastDiceThrow;
-
-                            return true;
-                        }
-                    }
-
-                    for (int i = 0; i < FinalStretch.Count; i++)
-                    {
-                        if (FinalStretch[finalStretchLocation].PieceList.Count > 0 && tempPiece.PlayerColor == FinalStretch[finalStretchLocation].PieceList[i].PlayerColor && tempPiece.PieceName == FinalStretch[finalStretchLocation].PieceList[i].PieceName)
-                        {
-                            FinalStretch[finalStretchLocation].PieceList.RemoveAt(i);
-                            tempPiece.Movement += LastDiceThrow;
-
-
-                            return true;
-                        }
-                    }
-                }
-
-
-                if (nextLocation > TileList.Count - 1 && !tempPiece.CompleteLap)
-                {
-                    nextLocation = nextLocation - TileList.Count;
-                    newLap = true;
-                }
-
-                if (!TileList[nextLocation].Full)
-                {
-                    if (!newLap)
-                    {
-                        for (int i = location + 1; i <= nextLocation; i++)
-                        {
-                            if (TileList[i].Blocked)
-                            {
-                                if (LastDiceThrow != 6)
-                                {
-                                    Counter++;
-                                }
-                                TileStatus();
-                                return false;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        //Applied when completed a whole lap
-                        for (int i = location + 1; i < TileList.Count; i++)
-                        {
-                            if (TileList[i].Blocked)
-                            {
-                                if (LastDiceThrow != 6)
-                                {
-                                    Counter++;
-                                }
-                                TileStatus();
-                                return false;
-                            }
-                        }
-                        for (int i = 0; i <= nextLocation; i++)
-                        {
-                            if (TileList[i].Blocked)
-                            {
-                                if (LastDiceThrow != 6)
-                                {
-                                    Counter++;
-                                }
-                                TileStatus();
-                                return false;
-                            }
-                        }
-
-                    }
-
-                    
-
-                    for (int i = 0; i < TileList[location].PieceList.Count; i++)
-                    {
-                        if (tempPiece.PlayerColor == TileList[location].PieceList[i].PlayerColor && tempPiece.PieceName == TileList[location].PieceList[i].PieceName)
-                        {
-                            TileList[location].PieceList.RemoveAt(i);
-                        }
-                    }
-
-                    TileList[nextLocation].AddPieceToTile(tempPiece);
-
-                }
-
-                tempPiece.Movement += LastDiceThrow;
-
-                if (LastDiceThrow != 6)
-                {
-                    Counter++;
-                }
-
-                TileStatus();
-                return true;
-            }
-        }
-
 
         public string[] NextTurn()
         {
-            string[] playerAndDice = new string[2];
-
-            if (Counter == NrOfPlayer)
+            if (ActivePlayer >= PlayersList.Count)
             {
-                Counter = 0;
+                ActivePlayer = 0;
             }
-
-            LastDiceThrow = 6;
-
-            playerAndDice[0] = PlayersList[Counter].Color;
-            playerAndDice[1] = "" + LastDiceThrow;
-
+            //LastDiceThrow = Dice.ThrowDice();
+            LastDiceThrow = 3;
+            string[] playerAndDice = new string[]
+            {
+            PlayersList[ActivePlayer].Color, LastDiceThrow.ToString()
+            };
             return playerAndDice;
 
         }
 
-        private string[] PieceFromNest(int pieceNr)
+        public string[] MovePiece(int pieceNr)
+        {
+            var currentPlayer = PlayersList[ActivePlayer];
+            var choosenPiece = currentPlayer.Pieces[pieceNr];
+
+            // Move pieces out of nest.
+            if (choosenPiece.InNest)
+            {
+                return PieceFromNest(choosenPiece, currentPlayer);
+            }
+
+            // Move pieces on the gameboard.
+            if (choosenPiece.Movement + LastDiceThrow <= 40)
+            {
+                return MovePieceOnBoard(choosenPiece, currentPlayer);
+            }
+
+            // Move piece over to final stretch.
+
+            return MovePieceOnFinal(choosenPiece, currentPlayer);
+
+
+
+
+        }
+
+        private string[] MovePieceOnFinal(Piece choosenPiece, Player currentPlayer)
+        {
+            var location = choosenPiece.StartLocation + choosenPiece.Movement;
+            var nextLocation = (choosenPiece.Movement + LastDiceThrow) - 40;
+            string[] playerAndDice = new string[] { currentPlayer.Color, "Piece has moved" };
+
+
+
+            if (PieceFinished(choosenPiece, location))
+            {
+                var winner = new string[] { currentPlayer.Color, choosenPiece.PieceName + " Has entered the goal." };
+                return winner;
+            }
+
+            // Move piece to the final stretch
+            if (choosenPiece.Movement < 40)
+            {
+                TileList[location].RemovePieceFromTile(choosenPiece);
+                FinalStretch[nextLocation].AddPieceToTile(choosenPiece);
+                choosenPiece.Movement += LastDiceThrow;
+                if (LastDiceThrow != 6)
+                {
+                    ActivePlayer++;
+                }
+
+                return playerAndDice;
+            }
+
+            // If piece already is on the final stretch
+            if (choosenPiece.Movement >= 40)
+            {
+                location = choosenPiece.Movement - 40;
+                if (nextLocation > FinalStretch.Count)
+                {
+                    int tempNextLoc = nextLocation - (FinalStretch.Count-1);
+                    nextLocation = (FinalStretch.Count-1) - tempNextLoc;
+
+
+                    //nextLocation = nextLocation - FinalStretch.Count;
+                    FinalStretch[nextLocation].AddPieceToTile(choosenPiece);
+                    FinalStretch[location].RemovePieceFromTile(choosenPiece);
+                    choosenPiece.Movement = nextLocation+40;
+                    if (LastDiceThrow != 6)
+                    {
+                        ActivePlayer++;
+                    }
+
+                    return playerAndDice;
+                }
+                FinalStretch[nextLocation].AddPieceToTile(choosenPiece);
+                FinalStretch[location].RemovePieceFromTile(choosenPiece);
+                return playerAndDice;
+
+            }
+
+            return playerAndDice;
+
+        }
+        private bool PieceFinished(Piece choosenPiece, int location)
+        {
+            if (choosenPiece.Movement + LastDiceThrow == 45)
+            {
+                choosenPiece.Score = true;
+                if (LastDiceThrow != 6)
+                {
+                    ActivePlayer++;
+                }
+                FinalStretch[location-40].RemovePieceFromTile(choosenPiece);
+                return true;
+            }
+            return false;
+        }
+        private string[] MovePieceOnBoard(Piece choosenPiece, Player currentPlayer)
+        {
+            var location = choosenPiece.StartLocation + choosenPiece.Movement;
+            var nextLocation = location + LastDiceThrow;
+            string[] playerAndDice = new string[] { currentPlayer.Color, "Piece has moved" };
+
+
+            // If piece has passed location 1 but not completed a whole lap.
+            if (nextLocation > TileList.Count)
+            {
+                nextLocation = nextLocation - TileList.Count;
+                TileList[nextLocation].AddPieceToTile(choosenPiece);
+                TileList[location].RemovePieceFromTile(choosenPiece);
+                choosenPiece.Movement += LastDiceThrow;
+                if (LastDiceThrow != 6)
+                {
+                    ActivePlayer++;
+                }
+
+
+                return playerAndDice;
+
+            }
+
+            // Move piece to next location.
+            TileList[nextLocation].AddPieceToTile(choosenPiece);
+            TileList[location].RemovePieceFromTile(choosenPiece);
+            choosenPiece.Movement += LastDiceThrow;
+            if (LastDiceThrow != 6)
+            {
+                ActivePlayer++;
+            }
+
+            return playerAndDice;
+
+        }
+        private string[] PieceFromNest(Piece choosenPiece, Player currentPlayer)
         {
             string[] playerAndDice = new string[2];
 
             if (LastDiceThrow != 6)
             {
-                playerAndDice[0] = PlayersList[Counter].Color;
-                playerAndDice[1] = LastDiceThrow + " Piece can not move. Next Player";
-                Counter++;
+                playerAndDice[0] = currentPlayer.Color;
+                playerAndDice[1] = " That piece can not move. Next Player";
+                ActivePlayer++;
                 TileStatus();
                 return playerAndDice;
             }
-            else if (LastDiceThrow == 6 && PlayersList[Counter].Pieces[pieceNr - 1].InNest)
+            else if (LastDiceThrow == 6)
             {
-                PlayersList[Counter].Pieces[pieceNr - 1].Movement = 1;
-                TileList[PlayersList[Counter].Pieces[pieceNr - 1].StartLocation].AddPieceToTile(PlayersList[Counter].Pieces[pieceNr - 1]);
+                choosenPiece.Movement = 0;
+                TileList[choosenPiece.StartLocation].AddPieceToTile(choosenPiece);
             }
 
-            playerAndDice[0] = PlayersList[Counter].Color;
+            playerAndDice[0] = currentPlayer.Color;
             playerAndDice[1] = "" + LastDiceThrow;
-
 
             return playerAndDice;
         }
-
-        public void SkipTurn()
-        {
-            Counter++;
-        }
-
         public void TileStatus()
         {
             foreach (var item in TileList)
@@ -275,6 +265,10 @@ namespace GameEngine
                 }
 
             }
+        }
+        public void PassTurn()
+        {
+            ActivePlayer++;
         }
     }
 }
