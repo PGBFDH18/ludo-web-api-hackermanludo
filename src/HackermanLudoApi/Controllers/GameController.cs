@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using HackermanLudoApi.Models;
 
 namespace HackermanLudoApi.Controllers
 {
@@ -13,9 +14,9 @@ namespace HackermanLudoApi.Controllers
     {
         // GET: api/Game
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<Game> Get()
         {
-            return new string[] { "value1", "value2" };
+            return FiaService.GettingGames();
         }
 
         // GET: api/Game/5

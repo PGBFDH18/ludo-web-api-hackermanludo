@@ -12,6 +12,7 @@ namespace HackermanLudoApi.Models
 
         public int Id { get; set; }
         public DateTime CreatedTime { get; set; }
+        public string Name { get; set; }
 
         public virtual ICollection<Player> Player { get; set; }
     }
