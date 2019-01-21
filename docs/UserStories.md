@@ -40,7 +40,9 @@ The database should not include gamelogic.
 
 ## Other
 
-Add comments in code
+~~Add comments in code~~
+
+~~YAML documentation~~
 
 Add GUI for GameEngine
 
