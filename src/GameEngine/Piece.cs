@@ -26,10 +26,6 @@ namespace GameEngine
             Score = false;
         }
 
-        public void MovePiece(int diceValue)
-        {
-            Movement += diceValue;
-        }
-
+      
     }
 }
