@@ -19,6 +19,13 @@ namespace HackermanLudoApi.Controllers
             return FiaService.GettingGames();
         }
 
+        //Test to get all players
+        //[HttpGet]
+        //public List<Player> Get()
+        //{
+        //    return FiaService.GetPlayers();
+        //}
+
         // GET: api/Game/5
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)

@@ -7,13 +7,14 @@ namespace HackermanLudoApi.Models
     {
         public Game()
         {
-            Player = new HashSet<Player>();
+            var context = new FiaDBContext();
+             
+            Player = new HashSet<Player>(context.Player);
         }
 
         public int Id { get; set; }
         public DateTime CreatedTime { get; set; }
         public string Name { get; set; }
-
         public virtual ICollection<Player> Player { get; set; }
     }
 }

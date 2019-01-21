@@ -9,9 +9,17 @@ namespace HackermanLudoApi.Models
     {
         public static List<Game> GettingGames()
         {
-            var context = new FiaDBContext();
 
+            var context = new FiaDBContext();
             return context.Game.ToList();
         }
+
+        //Test method for get all players
+        public static List<Player> GetPlayers()
+        {
+            var context = new FiaDBContext();
+            return context.Player.ToList();
+        }
+
     }
 }
