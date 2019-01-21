@@ -17,6 +17,7 @@ The database should not include gamelogic.
 
 #### Path for pieces
 `GET:` *Who's turn, dice throw, position of pieces*
+
 `PUT:` *Update piece position*
 
 
@@ -38,8 +39,10 @@ Database (SQL server) connected to C# project via Entity Framework. Data input i
 ## GameEngine
 
 #### Add functionallity for saving
+TBA
 
 #### Logic for loading game
+TBA
 
 #### Add function so you can finish
 
