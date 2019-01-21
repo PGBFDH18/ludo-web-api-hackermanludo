@@ -19,10 +19,18 @@ The database should not include gamelogic.
 `GET:` *Who's turn, dice throw, position of pieces*
 `PUT:` *Update piece position*
 
+
 #### Path for game
 `GET:` *Get list of games*
+
 `POST:` *Create New game*
+
 `DELETE:` *Get rid of game*
+
+
+#### Connect database and API
+Database (SQL server) connected to C# project via Entity Framework. Data input in SQL server can be reached through HTTP method `POST` in C# project. Validation of correct data flow through Postman.
+
 
 #### Multiplayer multiple devices
 
@@ -35,12 +43,15 @@ The database should not include gamelogic.
 
 #### Add function so you can finish
 
+New testbranch in GameEngine created. Possibly a lot of changes needed in GameEngine. *2019-01-21*
+
+
 
 
 
 ## Other
 
-~~Add comments in code~~
+Add comments in code
 
 ~~YAML documentation~~
 
