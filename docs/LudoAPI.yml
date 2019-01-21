@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  title: "LudoAPI"
+  description: "This is a Ludo game API"
+  contact:
+    name: API Support
+    email: olssonolof@hotmail.com
+  version: "1.0.0"
+paths:
+  /ludo/game:
+    get:
+      description: Get list of games
+      summary: Get a list of all games
+      operationID: LudoEngine
+      responses:
+        '200':
+          description: List of games
+        '404':
+          description: Couldn't get list
+    post:
+      description: Create new game
+      summary: Creates a new game
+      responses:
+        '200':
+          description: Game was created
+        '404':
+          description: Couldn't create game
+    delete:
+      description: Remove game
+      summary: Remove game
+      responses:
+        '200':
+          description: Game removed
+        '404':
+          description: Couldn't remove game
+  /ludo/whosTurn/diceThrow/positionOfPieces:
+    get:
+      description: Get player information
+      summary: Get player information
+      responses:
+        '200':
+          description: Player information recieved
+        '404':
+          description: Couldn't recieve information
+    put:
+      description: Update piece position
+      summary: Update piece position
+      responses:
+        '200':
+          description: Piece position updated
+        '404':
+          description: Couldn't update position
+    
