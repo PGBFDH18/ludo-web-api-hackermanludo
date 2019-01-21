@@ -15,6 +15,17 @@ paths:
       responses:
         '200':
           description: List of games
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: The user ID.
+                  username:
+                    type: string
+                    description: The user name.
         '404':
           description: Couldn't get list
     post:
@@ -40,6 +51,33 @@ paths:
       responses:
         '200':
           description: Player information recieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  color:
+                    type: string
+                    description: Who's turn by colour
+                  diceThrow:
+                    type: integer
+                    description: Value of dice throw
+                  positionOfPieces:
+                    type: object
+                    properties:
+                      piece1: 
+                        type: object
+                        description: Piece one object
+                      piece2:
+                        type: object
+                        description: Piece two object
+                      piece3:
+                        type: object
+                        description: Piece three object
+                      piece4:
+                        type: object
+                        description: Piece four object
+                    description: Position of every piece
         '404':
           description: Couldn't recieve information
     put:
