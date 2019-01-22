@@ -46,7 +46,7 @@ TBA
 
 #### Add function so you can finish
 
-New testbranch in GameEngine created. Possibly a lot of changes needed in GameEngine. *2019-01-21*
+~~New testbranch in GameEngine created. Possibly a lot of changes needed in GameEngine. *2019-01-21*
 
 
 
