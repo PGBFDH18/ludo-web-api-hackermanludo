@@ -54,7 +54,7 @@ TBA
 
 ## Other
 
-Add comments in code
+~~Add comments in code~~
 
 ~~YAML documentation~~
 
