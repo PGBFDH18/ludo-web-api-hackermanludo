@@ -1,2 +1,2 @@
 # Projekt formulering
-[Fia Web API](https://pgbfdh18.github.io/webbutveckling-backend/project2.html)
+![alt text](http://wall-skills.com/wp-content/uploads/2013/12/solid-OOP_wall-skills.jpg)
