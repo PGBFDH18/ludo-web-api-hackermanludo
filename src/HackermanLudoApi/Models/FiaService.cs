@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace HackermanLudoApi.Models
 {
@@ -11,13 +12,15 @@ namespace HackermanLudoApi.Models
         {
 
             var context = new FiaDBContext();
+
             return context.Game.ToList();
+            
         }
 
-        //Test method for get all players
-        public static List<Player> GetPlayers()
+        public static List<Player> GettingPlayer()
         {
             var context = new FiaDBContext();
+
             return context.Player.ToList();
         }
 

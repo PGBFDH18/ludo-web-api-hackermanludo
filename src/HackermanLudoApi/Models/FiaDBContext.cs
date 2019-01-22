@@ -55,12 +55,6 @@ namespace HackermanLudoApi.Models
                     .HasMaxLength(50);
 
                 entity.Property(e => e.PlayerId).HasColumnName("PlayerID");
-
-                entity.HasOne(d => d.Player)
-                    .WithMany(p => p.Pieces)
-                    .HasForeignKey(d => d.PlayerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Pieces_Player");
             });
 
             modelBuilder.Entity<Player>(entity =>
@@ -74,18 +68,6 @@ namespace HackermanLudoApi.Models
                 entity.Property(e => e.GameId).HasColumnName("GameID");
 
                 entity.Property(e => e.UserId).HasColumnName("UserID");
-
-                entity.HasOne(d => d.Game)
-                    .WithMany(p => p.Player)
-                    .HasForeignKey(d => d.GameId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Player_Game");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Player)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Player_Users");
             });
 
             modelBuilder.Entity<Tile>(entity =>
@@ -93,12 +75,6 @@ namespace HackermanLudoApi.Models
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.PieceId).HasColumnName("PieceID");
-
-                entity.HasOne(d => d.Piece)
-                    .WithMany(p => p.Tile)
-                    .HasForeignKey(d => d.PieceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Tile_Pieces");
             });
 
             modelBuilder.Entity<Users>(entity =>

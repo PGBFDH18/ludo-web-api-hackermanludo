@@ -5,11 +5,6 @@ namespace HackermanLudoApi.Models
 {
     public partial class Pieces
     {
-        public Pieces()
-        {
-            Tile = new HashSet<Tile>();
-        }
-
         public int Id { get; set; }
         public int StartLocation { get; set; }
         public int Movement { get; set; }
@@ -19,8 +14,5 @@ namespace HackermanLudoApi.Models
         public bool CompleteLap { get; set; }
         public bool Finnished { get; set; }
         public int PlayerId { get; set; }
-
-        public virtual Player Player { get; set; }
-        public virtual ICollection<Tile> Tile { get; set; }
     }
 }

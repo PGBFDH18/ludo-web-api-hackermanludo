@@ -10,7 +10,5 @@ namespace HackermanLudoApi.Models
         public bool Full { get; set; }
         public bool Blocked { get; set; }
         public int PieceId { get; set; }
-
-        public virtual Pieces Piece { get; set; }
     }
 }
