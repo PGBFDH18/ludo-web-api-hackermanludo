@@ -9,6 +9,8 @@ info:
 paths:
   /ludo/game:
     get:
+      tag:
+       - game
       description: Get list of games
       summary: Get a list of all games
       operationID: LudoEngine
@@ -26,6 +28,9 @@ paths:
                   username:
                     type: string
                     description: The user name.
+                example: 
+                  id: 1
+                  username: game1
         '404':
           description: Couldn't get list
     post:
@@ -78,6 +83,16 @@ paths:
                         type: object
                         description: Piece four object
                     description: Position of every piece
+                example:
+                  color: blue
+                  diceThrow: 6
+                  positionOfPieces: 
+                    {
+                      piece1: {},
+                      piece2: {},
+                      piece3: {},
+                      piece4: {}
+                    }
         '404':
           description: Couldn't recieve information
     put:
@@ -88,4 +103,3 @@ paths:
           description: Piece position updated
         '404':
           description: Couldn't update position
-    
