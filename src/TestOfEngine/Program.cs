@@ -1,5 +1,7 @@
 ﻿using System;
 using GameEngine;
+using HackermanLudoApi;
+
 
 namespace TestOfEngine
 {
@@ -7,8 +9,28 @@ namespace TestOfEngine
     {
         static void Main(string[] args)
         {
-            int players = ReadInt("How many players?");
-            var game = new LudoEngine(players);
+            int loadGame = ReadInt("1: New game?\n2: Load game?");
+
+            LudoEngine game;
+
+            if (loadGame == 2)
+            {
+                HackermanLudoApi.Models.GamSesssion.LoadGame();
+
+                for (int i = 0; i < HackermanLudoApi.Models.GamSesssion.GameList.Count; i++)
+                {
+                    Console.WriteLine(i+": "+HackermanLudoApi.Models.GamSesssion.GameList[i].GameName);
+                }
+                int gameToLoad = ReadInt("What game to load?");
+                game = HackermanLudoApi.Models.GamSesssion.GameList[gameToLoad];
+
+            }
+            else
+            {
+
+                int players = ReadInt("How many players?");
+                game = new LudoEngine(players, ReadString("GameName?"));
+            }
 
 
 
@@ -32,6 +54,11 @@ namespace TestOfEngine
                     game.PassTurn();
                 }
 
+
+                if (1 == ReadInt("SaveGame?\n1:Yes\n2:No"))
+                {
+                    HackermanLudoApi.Models.GamSesssion.SaveGame(game);
+                }
             }
         }
 
@@ -92,6 +119,12 @@ namespace TestOfEngine
                 }
 
             }
+        }
+
+        static public string ReadString(string promt)
+        {
+            Console.WriteLine(promt);
+            return Console.ReadLine();
         }
     }
 }

@@ -12,13 +12,27 @@ namespace HackermanLudoApi.Controllers
     [ApiController]
     public class GameController : ControllerBase
     {
-        // GET: api/Game
+        //// GET: api/Game
         [HttpGet]
         public List<Game> Get()
         {
             return FiaService.GettingGames();
         }
 
-       
+        // GET: api/Game/games
+        
+        [HttpGet("game")]
+        public List<string> Get(string getgames)
+        {
+            var gameList = GamSesssion.LoadGame();
+            var returnList = new List<string>();
+            foreach (var item in gameList)
+            {
+                returnList.Add(item.GameName);
+            }
+            return returnList;
+        }
+
+
     }
 }

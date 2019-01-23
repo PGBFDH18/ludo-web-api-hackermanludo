@@ -6,6 +6,7 @@ namespace GameEngine
 {
     public class LudoEngine
     {
+        public string GameName { get; set; }
         public int ActivePlayer = 0;
         private int LastDiceThrow { get; set; }
         private int nrOfPlayer;
@@ -36,8 +37,9 @@ namespace GameEngine
         public List<Tile> TileList { get; set; }
         public List<Tile> FinalStretch { get; set; }
 
-        public LudoEngine(int numberOfPlayers)
+        public LudoEngine(int numberOfPlayers, string gameName)
         {
+            GameName = gameName;
             NrOfPlayer = numberOfPlayers;
             if (OkToStart)
             {
@@ -71,7 +73,7 @@ namespace GameEngine
                 ActivePlayer = 0;
             }
             //LastDiceThrow = Dice.ThrowDice();
-            LastDiceThrow = 3;
+            LastDiceThrow = 6;
             string[] playerAndDice = new string[]
             {
             PlayersList[ActivePlayer].Color, LastDiceThrow.ToString()

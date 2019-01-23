@@ -10,7 +10,7 @@ namespace Testning
         [Fact]
         public void TestPieceMoveOnGameBoard()
         {
-            var game = new LudoEngine(2);
+            var game = new LudoEngine(2, "xxx");
 
             game.PlayersList[0].Pieces[0].InNest = false;
             game.PlayersList[0].Pieces[0].Movement = 14;
@@ -25,7 +25,7 @@ namespace Testning
         [Fact]
         public void TestPieceInFinalStretch()
         {
-            var game = new LudoEngine(2);
+            var game = new LudoEngine(2, "yyy");
 
             game.PlayersList[0].Pieces[0].InNest = false;
             game.PlayersList[0].Pieces[0].Movement = 42;
@@ -41,7 +41,7 @@ namespace Testning
         [Fact]
         public void NextTurn()
         {
-            var game = new LudoEngine(2);
+            var game = new LudoEngine(2, "xxx");
 
 
 
@@ -54,7 +54,7 @@ namespace Testning
         [Fact]
         public void StartGameWihTwoPlayer()
         {
-            var game = new LudoEngine(2);
+            var game = new LudoEngine(2, "zzz");
 
 
             Assert.Equal(2, game.PlayersList.Count);
@@ -68,7 +68,7 @@ namespace Testning
         [Fact]
         public void StartGameWihFourPlayer()
         {
-            var game = new LudoEngine(4);
+            var game = new LudoEngine(4, "ppp");
 
 
             Assert.Equal(4, game.PlayersList.Count);
