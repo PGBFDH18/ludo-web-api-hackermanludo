@@ -65,5 +65,15 @@ namespace Testning
 
             Assert.Equal(4, game.PlayersList[0].Pieces.Count);
         }
+        [Fact]
+        public void StartGameWihFourPlayer()
+        {
+            var game = new LudoEngine(4);
+
+
+            Assert.Equal(4, game.PlayersList.Count);
+
+           
+        }
     }
 }
