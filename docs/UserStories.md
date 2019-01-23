@@ -34,15 +34,15 @@ Database (SQL server) connected to C# project via Entity Framework. Data input i
 
 
 #### Multiplayer multiple devices
-
+TBA
 
 ## GameEngine
 
 #### Add functionallity for saving
-TBA
+Save game in json format.
 
 #### Logic for loading game
-TBA
+Load game in json format.
 
 #### Add function so you can finish
 
