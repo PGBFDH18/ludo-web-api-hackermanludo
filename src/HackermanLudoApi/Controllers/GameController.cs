@@ -8,7 +8,7 @@ using HackermanLudoApi.Models;
 
 namespace HackermanLudoApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/ludo/[controller]")]
     [ApiController]
     public class GameController : ControllerBase
     {
