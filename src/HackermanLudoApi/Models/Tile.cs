@@ -9,6 +9,7 @@ namespace HackermanLudoApi.Models
         public int TilePosition { get; set; }
         public bool Full { get; set; }
         public bool Blocked { get; set; }
-        public int PieceId { get; set; }
+        public int? Piece1Id { get; set; }
+        public int? Piece2Id { get; set; }
     }
 }

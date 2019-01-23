@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
@@ -77,15 +76,15 @@ namespace HackermanLudoApi.Models
                 entity.Property(e => e.GameId).HasColumnName("GameID");
 
                 entity.Property(e => e.UserId).HasColumnName("UserID");
-
-
             });
 
             modelBuilder.Entity<Tile>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.PieceId).HasColumnName("PieceID");
+                entity.Property(e => e.Piece1Id).HasColumnName("Piece1ID");
+
+                entity.Property(e => e.Piece2Id).HasColumnName("Piece2ID");
             });
 
             modelBuilder.Entity<Users>(entity =>
