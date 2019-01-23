@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace HackermanLudoApi.Models
 {
@@ -23,15 +25,20 @@ namespace HackermanLudoApi.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+            var configuration = builder.Build();
+
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=tcp:krypt0r.database.windows.net,1433;Initial Catalog=FiaDB;Persist Security Info=False;User ID=Victor;Password=*WlJe3wp7!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer(configuration["ConnectionStrings:FiaDB"]);
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.1-servicing-10028");
+
+            modelBuilder.Entity<Game>().HasMany(g => g.Players).WithOne();
 
             modelBuilder.Entity<Game>(entity =>
             {
@@ -57,6 +64,8 @@ namespace HackermanLudoApi.Models
                 entity.Property(e => e.PlayerId).HasColumnName("PlayerID");
             });
 
+            modelBuilder.Entity<Player>().HasOne(p => p.Game).WithMany(b => b.Players).HasForeignKey(p => p.GameId);
+
             modelBuilder.Entity<Player>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -68,6 +77,8 @@ namespace HackermanLudoApi.Models
                 entity.Property(e => e.GameId).HasColumnName("GameID");
 
                 entity.Property(e => e.UserId).HasColumnName("UserID");
+
+
             });
 
             modelBuilder.Entity<Tile>(entity =>
