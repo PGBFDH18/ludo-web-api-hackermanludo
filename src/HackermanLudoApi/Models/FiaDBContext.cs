@@ -17,10 +17,10 @@ namespace HackermanLudoApi.Models
         }
 
         public virtual DbSet<Game> Game { get; set; }
-        public virtual DbSet<Pieces> Pieces { get; set; }
+        public virtual DbSet<Piece> Piece { get; set; }
         public virtual DbSet<Player> Player { get; set; }
         public virtual DbSet<Tile> Tile { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -37,8 +37,6 @@ namespace HackermanLudoApi.Models
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.1-servicing-10028");
 
-            modelBuilder.Entity<Game>().HasMany(g => g.Players).WithOne();
-
             modelBuilder.Entity<Game>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -52,7 +50,7 @@ namespace HackermanLudoApi.Models
                     .HasMaxLength(100);
             });
 
-            modelBuilder.Entity<Pieces>(entity =>
+            modelBuilder.Entity<Piece>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
@@ -61,9 +59,20 @@ namespace HackermanLudoApi.Models
                     .HasMaxLength(50);
 
                 entity.Property(e => e.PlayerId).HasColumnName("PlayerID");
-            });
 
-            modelBuilder.Entity<Player>().HasOne(p => p.Game).WithMany(b => b.Players).HasForeignKey(p => p.GameId);
+                entity.Property(e => e.TileId).HasColumnName("TileID");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.Piece)
+                    .HasForeignKey(d => d.PlayerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Piece_Player");
+
+                entity.HasOne(d => d.Tile)
+                    .WithMany(p => p.TilePieces)
+                    .HasForeignKey(d => d.TileId)
+                    .HasConstraintName("FK_Piece_Tile");
+            });
 
             modelBuilder.Entity<Player>(entity =>
             {
@@ -76,18 +85,26 @@ namespace HackermanLudoApi.Models
                 entity.Property(e => e.GameId).HasColumnName("GameID");
 
                 entity.Property(e => e.UserId).HasColumnName("UserID");
+
+                entity.HasOne(d => d.Game)
+                    .WithMany(p => p.Player)
+                    .HasForeignKey(d => d.GameId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Player_Game");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Player)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Player_User");
             });
 
             modelBuilder.Entity<Tile>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.Piece1Id).HasColumnName("Piece1ID");
-
-                entity.Property(e => e.Piece2Id).HasColumnName("Piece2ID");
             });
 
-            modelBuilder.Entity<Users>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 

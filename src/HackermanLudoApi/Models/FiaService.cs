@@ -13,7 +13,7 @@ namespace HackermanLudoApi.Models
 
             var context = new FiaDBContext();
 
-            var includingPlayers = context.Game.Include(g => g.Players).ToList();
+            var includingPlayers = context.Game.Include(g => g.Player).ToList();
 
             return includingPlayers;
             

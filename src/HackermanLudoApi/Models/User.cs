@@ -3,16 +3,17 @@ using System.Collections.Generic;
 
 namespace HackermanLudoApi.Models
 {
-    public partial class Game
+    public partial class User
     {
-        public Game()
+        public User()
         {
             Player = new HashSet<Player>();
         }
 
         public int Id { get; set; }
-        public DateTime CreatedTime { get; set; }
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
 
         public virtual ICollection<Player> Player { get; set; }
     }
