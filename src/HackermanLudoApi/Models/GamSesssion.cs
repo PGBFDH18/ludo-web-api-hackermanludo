@@ -19,7 +19,7 @@ namespace HackermanLudoApi.Models
         static public void SaveGame(LudoEngine gameToSave)
         {
             bool found = false;
-            LoadGame();
+            ShowSavedGames();
             for (int i = 0; i < GameList.Count && !found; i++)
             {
                 if (GameList[i].GameName == gameToSave.GameName)
@@ -33,7 +33,22 @@ namespace HackermanLudoApi.Models
             File.WriteAllText(@"c:/test/ludo.json", json);
         }
 
-        static public List<LudoEngine> LoadGame()
+
+        static public string[] LoadSavedGame(string gameName)
+        {
+            foreach (var item in GameList)
+            {
+                if (item.GameName == gameName)
+                {
+                    game = item;
+                }
+            }
+            string[] returnString = new string[2];
+            return returnString = game.NextTurn();
+        }
+
+
+        static public List<LudoEngine> ShowSavedGames()
         {
             if (File.Exists(@"c:/test/ludo.json"))
             {
@@ -48,7 +63,7 @@ namespace HackermanLudoApi.Models
         }
         static public List<string> GetGame()
         {
-            var gameList = GamSesssion.LoadGame();
+            var gameList = GamSesssion.ShowSavedGames();
             var returnList = new List<string>();
             foreach (var item in gameList)
             {
@@ -69,7 +84,7 @@ namespace HackermanLudoApi.Models
         static public string[] MovePiece(int pieceNr)
         {
             game.NextTurn();
-            return game.MovePiece(pieceNr-1);
+            return game.MovePiece(pieceNr - 1);
         }
 
 
@@ -79,7 +94,7 @@ namespace HackermanLudoApi.Models
             game.NextTurn();
             foreach (var item in game.PlayersList[game.ActivePlayer].Pieces)
             {
-                returnList.Add(game.NextTurn()[0]+","+game.NextTurn()[1]);
+                returnList.Add(game.NextTurn()[0] + "," + game.NextTurn()[1]);
                 if (item.InNest)
                 {
                     returnList.Add(item.PlayerColor + " " + item.PieceName + " " + " is in nest.");

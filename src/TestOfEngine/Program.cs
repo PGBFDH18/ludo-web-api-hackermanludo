@@ -15,7 +15,7 @@ namespace TestOfEngine
 
             if (loadGame == 2)
             {
-                HackermanLudoApi.Models.GamSesssion.LoadGame();
+                HackermanLudoApi.Models.GamSesssion.ShowSavedGames();
 
                 for (int i = 0; i < HackermanLudoApi.Models.GamSesssion.GameList.Count; i++)
                 {

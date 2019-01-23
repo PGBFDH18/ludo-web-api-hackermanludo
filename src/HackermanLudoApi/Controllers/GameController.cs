@@ -22,7 +22,7 @@ namespace HackermanLudoApi.Controllers
         //}
 
         // GET: api/Ludo/Game/games
-        
+
         [HttpGet("game")]
         public List<string> Get(string getgames)
         {
@@ -34,10 +34,23 @@ namespace HackermanLudoApi.Controllers
         [HttpPost("creategame")]
         public string[] NewGame(string[] gameInfo)
         {
-            int players = int.Parse(gameInfo[0]);
-            string gameName = gameInfo[1];
-            return GamSesssion.NewGame(players, gameName);
-           
+            int choice = int.Parse(gameInfo[2]);
+            if (choice == 1)
+            {
+                int players = int.Parse(gameInfo[0]);
+                string gameName = gameInfo[1];
+                return GamSesssion.NewGame(players, gameName);
+            }
+            return GamSesssion.GetGame().ToArray();
+        }
+
+        // POST: api/Ludo/game/LoadGame
+        [HttpPost("LoadGame/{gameName}")]
+        public string[] LoadGame(string gameName)
+        {
+
+            return GamSesssion.LoadSavedGame(gameName);
+
         }
 
         //GET: api/ludo/game/gameInfo
@@ -56,5 +69,8 @@ namespace HackermanLudoApi.Controllers
             return GamSesssion.MovePiece(pieceNr);
 
         }
+
+
+
     }
 }
