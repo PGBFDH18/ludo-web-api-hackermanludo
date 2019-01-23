@@ -41,6 +41,7 @@ namespace GameEngine
         {
             GameName = gameName;
             NrOfPlayer = numberOfPlayers;
+
             if (OkToStart)
             {
                 PlayersList = new List<Player>();
@@ -72,8 +73,8 @@ namespace GameEngine
             {
                 ActivePlayer = 0;
             }
-            //LastDiceThrow = Dice.ThrowDice();
-            LastDiceThrow = 6;
+            LastDiceThrow = Dice.ThrowDice();
+            //LastDiceThrow = 6;
             string[] playerAndDice = new string[]
             {
             PlayersList[ActivePlayer].Color, LastDiceThrow.ToString()
@@ -235,7 +236,7 @@ namespace GameEngine
             }
 
             playerAndDice[0] = currentPlayer.Color;
-            playerAndDice[1] = "" + LastDiceThrow;
+            playerAndDice[1] = "" + choosenPiece.PieceName;
 
             return playerAndDice;
         }
