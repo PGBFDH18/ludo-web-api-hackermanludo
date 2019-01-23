@@ -8,7 +8,7 @@ namespace HackermanLudoApi.Models
 {
     public class FiaService
     {
-        public static List<Game> GettingGames(int id)
+        public static List<Game> GettingGame(int id)
         {
 
             using (var context = new FiaDBContext())
@@ -21,15 +21,14 @@ namespace HackermanLudoApi.Models
 
                 return includingAll;
             }
-
-
         }
 
-        public static List<Player> GettingPlayer()
+        public static void SaveToDb()
         {
-            var context = new FiaDBContext();
+            using(var context = new FiaDBContext())
+            {
 
-            return context.Player.ToList();
+            }
         }
 
     }
