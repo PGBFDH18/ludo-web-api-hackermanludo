@@ -15,6 +15,16 @@ The database should not include gamelogic.
 
 ## API
 
+**Save to SQL** - `POST`
+
+**Update saved game** - `PUT`
+
+**Load saved game** - `GET`
+
+**Delete saved game** - `DELETE`
+
+**Load game info each dicethrow** - `GET`
+
 #### Path for pieces
 `GET:` *Who's turn, dice throw, position of pieces*
 
@@ -47,6 +57,7 @@ TBA
 #### Add functionallity for saving
 Save game in json format.
 Data is saved locally untill user saves game. When game saved `POST` to SQL server. 
+`PUT`method 
 
 #### Logic for loading game
 Load game in json format.
@@ -71,3 +82,6 @@ Add GUI for GameEngine
 Clean up documentation
 
 Easteregg
+
+
+
