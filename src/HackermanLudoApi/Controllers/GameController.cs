@@ -55,6 +55,6 @@ namespace HackermanLudoApi.Controllers
         {
             return GamSesssion.MovePiece(pieceNr);
 
-
+        }
     }
 }
