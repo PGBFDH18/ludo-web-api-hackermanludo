@@ -8,15 +8,21 @@ namespace HackermanLudoApi.Models
 {
     public class FiaService
     {
-        public static List<Game> GettingGames()
+        public static List<Game> GettingGames(int id)
         {
 
-            var context = new FiaDBContext();
+            using (var context = new FiaDBContext())
+            {
+                var includingAll = context.Game.Where(g => g.Id == id)
+                    .Include(p => p.Player)
+                    .ThenInclude(piece => piece.Piece)
+                    .ThenInclude(tile => tile.Tile)
+                    .ToList();
 
-            var includingPlayers = context.Game.Include(g => g.Players).ToList();
+                return includingAll;
+            }
 
-            return includingPlayers;
-            
+
         }
 
         public static List<Player> GettingPlayer()
