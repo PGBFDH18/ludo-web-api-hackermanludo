@@ -34,6 +34,7 @@ Database (SQL server) connected to C# project via Entity Framework. Data input i
 
 *2019-01-23:* Trying to extract data from database to Entity Framework Models. Due to risk of destroying app new branch *HopefullyWorking* created where different approaches can be tested. 
 *HopefullyWorking* can extract all data from database to Entity Framework. Merging *HopefullyWorking* with *ApproveOrDie*
+Merging *TestSave* with *ApproveOrDie*.
 
 
 
@@ -45,9 +46,11 @@ TBA
 
 #### Add functionallity for saving
 Save game in json format.
+Data is saved locally untill user saves game. When game saved `POST` to SQL server. 
 
 #### Logic for loading game
 Load game in json format.
+Data `GET` from SQL server to user. 
 
 #### Add function so you can finish
 
