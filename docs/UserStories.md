@@ -47,6 +47,7 @@ TBA
 #### Add functionallity for saving
 Save game in json format.
 Data is saved locally untill user saves game. When game saved `POST` to SQL server. 
+`PUT`method 
 
 #### Logic for loading game
 Load game in json format.
@@ -71,3 +72,12 @@ Add GUI for GameEngine
 Clean up documentation
 
 Easteregg
+
+
+​```mermaid
+graph LR
+A[Hard edge] -->B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
+​```
