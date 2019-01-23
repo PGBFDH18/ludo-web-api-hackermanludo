@@ -15,6 +15,16 @@ The database should not include gamelogic.
 
 ## API
 
+**Save to SQL** - `POST`
+
+**Update saved game** - `PUT`
+
+**Load saved game** - `GET`
+
+**Delete saved game** - `DELETE`
+
+**Load game info each dicethrow** - `GET`
+
 #### Path for pieces
 `GET:` *Who's turn, dice throw, position of pieces*
 
@@ -74,10 +84,4 @@ Clean up documentation
 Easteregg
 
 
-​```mermaid
-graph LR
-A[Hard edge] -->B(Round edge)
-    B --> C{Decision}
-    C -->|One| D[Result one]
-    C -->|Two| E[Result two]
-​```
+
