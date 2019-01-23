@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace HackermanLudoApi.Models
 {
@@ -16,16 +17,19 @@ namespace HackermanLudoApi.Models
         }
 
         public virtual DbSet<Game> Game { get; set; }
-        public virtual DbSet<Pieces> Pieces { get; set; }
+        public virtual DbSet<Piece> Piece { get; set; }
         public virtual DbSet<Player> Player { get; set; }
         public virtual DbSet<Tile> Tile { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+            var configuration = builder.Build();
+
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=tcp:krypt0r.database.windows.net,1433;Initial Catalog=FiaDB;Persist Security Info=False;User ID=Victor;Password=*WlJe3wp7!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer(configuration["ConnectionStrings:FiaDB"]);
             }
         }
 
@@ -46,7 +50,7 @@ namespace HackermanLudoApi.Models
                     .HasMaxLength(100);
             });
 
-            modelBuilder.Entity<Pieces>(entity =>
+            modelBuilder.Entity<Piece>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
@@ -55,6 +59,19 @@ namespace HackermanLudoApi.Models
                     .HasMaxLength(50);
 
                 entity.Property(e => e.PlayerId).HasColumnName("PlayerID");
+
+                entity.Property(e => e.TileId).HasColumnName("TileID");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.Piece)
+                    .HasForeignKey(d => d.PlayerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Piece_Player");
+
+                entity.HasOne(d => d.Tile)
+                    .WithMany(p => p.TilePieces)
+                    .HasForeignKey(d => d.TileId)
+                    .HasConstraintName("FK_Piece_Tile");
             });
 
             modelBuilder.Entity<Player>(entity =>
@@ -68,16 +85,26 @@ namespace HackermanLudoApi.Models
                 entity.Property(e => e.GameId).HasColumnName("GameID");
 
                 entity.Property(e => e.UserId).HasColumnName("UserID");
+
+                entity.HasOne(d => d.Game)
+                    .WithMany(p => p.Player)
+                    .HasForeignKey(d => d.GameId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Player_Game");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Player)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Player_User");
             });
 
             modelBuilder.Entity<Tile>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.PieceId).HasColumnName("PieceID");
             });
 
-            modelBuilder.Entity<Users>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 

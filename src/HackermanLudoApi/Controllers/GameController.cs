@@ -13,6 +13,7 @@ namespace HackermanLudoApi.Controllers
     [ApiController]
     public class GameController : ControllerBase
     {
+
         ////// GET: api/ludo/Game
         //[HttpGet]
         //public List<Game> Get()
@@ -53,7 +54,7 @@ namespace HackermanLudoApi.Controllers
         public string[] MovePiece(int pieceNr)
         {
             return GamSesssion.MovePiece(pieceNr);
-        }
+
 
     }
 }

@@ -32,17 +32,22 @@ The database should not include gamelogic.
 #### Connect database and API
 Database (SQL server) connected to C# project via Entity Framework. Data input in SQL server can be reached through HTTP method `POST` in C# project. Validation of correct data flow through Postman.
 
+*2019-01-23:* Trying to extract data from database to Entity Framework Models. Due to risk of destroying app new branch *HopefullyWorking* created where different approaches can be tested. 
+*HopefullyWorking* can extract all data from database to Entity Framework. Merging *HopefullyWorking* with *ApproveOrDie*
+
+
+
 
 #### Multiplayer multiple devices
-
+TBA
 
 ## GameEngine
 
 #### Add functionallity for saving
-TBA
+Save game in json format.
 
 #### Logic for loading game
-TBA
+Load game in json format.
 
 #### Add function so you can finish
 
