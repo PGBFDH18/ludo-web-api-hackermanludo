@@ -15,6 +15,19 @@ The database should not include gamelogic.
 
 ## API
 
+#### Postman
+We test the published API on Postman. Through the API we have created methods to:
+
+`POST` - create game sessions
+
+`GET` - get saved game sessions
+
+`GET` - get the game session you are currently playing
+
+`GET` - load saved game
+
+
+
 **Save to SQL** - `POST`
 
 **Update saved game** - `PUT`
@@ -51,6 +64,22 @@ Merging *TestSave* with *ApproveOrDie*.
 
 #### Multiplayer multiple devices
 TBA
+
+## Azure
+
+#### API
+On Azure we have published API and database.
+
+## DevOps
+Handling structure of building application, API and database.
+
+Handling strutucre of workload by using the built in *Boards*.
+
+Unit testing through *Builds* in *Pipelines*.
+
+![](https://gyazo.com/96a740d7aac683b367671da6a8c4bf97)
+
+
 
 ## GameEngine
 
