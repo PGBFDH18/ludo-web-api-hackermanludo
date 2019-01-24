@@ -15,6 +15,9 @@ The database should not include gamelogic.
 
 ## API
 
+#### Link to published API
+http://ludoapi.azurewebsites.net/api/ludo/game/gameinfo
+
 #### Postman
 We test the published API on Postman. Through the API we have created methods to:
 
