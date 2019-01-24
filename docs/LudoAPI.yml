@@ -7,12 +7,10 @@ info:
     email: olssonolof@hotmail.com
   version: "1.0.0"
 paths:
-  /ludo/game:
+  api/ludo/game/games:
     get:
-      tag:
-       - game
-      description: Get list of games
-      summary: Get a list of all games
+      description: Get list of games.
+      summary: Get a list of all games.
       operationID: LudoEngine
       responses:
         '200':
@@ -22,84 +20,111 @@ paths:
               schema:
                 type: object
                 properties:
-                  id:
-                    type: integer
-                    description: The user ID.
-                  username:
+                  game:
                     type: string
-                    description: The user name.
+                    description: The name of the game.
                 example: 
-                  id: 1
-                  username: game1
+                    {
+                      game: exampleGame
+                    }
         '404':
-          description: Couldn't get list
+          description: Couldn't get list.
+  api/ludo/game/creategame:
     post:
-      description: Create new game
-      summary: Creates a new game
+      description: Create new game.
+      summary: Creates a new game.
       responses:
         '200':
-          description: Game was created
-        '404':
-          description: Couldn't create game
-    delete:
-      description: Remove game
-      summary: Remove game
-      responses:
-        '200':
-          description: Game removed
-        '404':
-          description: Couldn't remove game
-  /ludo/whosTurn/diceThrow/positionOfPieces:
-    get:
-      description: Get player information
-      summary: Get player information
-      responses:
-        '200':
-          description: Player information recieved
+          description: Game was created.
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  color:
+                  player:
                     type: string
-                    description: Who's turn by colour
+                    description: The color of next player.
                   diceThrow:
                     type: integer
-                    description: Value of dice throw
-                  positionOfPieces:
-                    type: object
-                    properties:
-                      piece1: 
-                        type: object
-                        description: Piece one object
-                      piece2:
-                        type: object
-                        description: Piece two object
-                      piece3:
-                        type: object
-                        description: Piece three object
-                      piece4:
-                        type: object
-                        description: Piece four object
-                    description: Position of every piece
+                    description: The value of the dice throw.
+                example: 
+                  {
+                    player: blue,
+                    diceThrow: 4
+                  }
+        '404':
+          description: Couldn't create game
+  api/ludo/game/loadgame:
+    post:
+      description: Load saved game.
+      summary: Loads the saved game.
+      responses:
+        '200':
+          description: Game was loaded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  player:
+                    type: string
+                    description: The color of next player.
+                  diceThrow:
+                    type: integer
+                    description: The value of the dice throw.
+                example: 
+                  {
+                    player: blue,
+                    diceThrow: 4
+                  }
+        '404':
+          description: Couldn't create game
+  api/ludo/game/gameinfo:
+    get:
+      description: Get game information.
+      summary: Get game information.
+      responses:
+        '200':
+          description: Game information recieved.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  gameInfo: 
+                    type: string
+                    description: Return information about the game state.
                 example:
-                  color: blue
-                  diceThrow: 6
-                  positionOfPieces: 
-                    {
-                      piece1: {},
-                      piece2: {},
-                      piece3: {},
-                      piece4: {}
-                    }
+                  {
+                    Blue 1 is in nest.,
+                    Blue 2 is in nest.,
+                    Blue 3 is in nest.,
+                    Blue 4 is in nest.
+                  }
         '404':
           description: Couldn't recieve information
+  api/ludo/game/updatedpieceposition:
     put:
       description: Update piece position
       summary: Update piece position
       responses:
         '200':
           description: Piece position updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  player: 
+                    type: string
+                    description: Return string from method.
+                  movePiece:
+                    type: string
+                    description: Information about movement action.
+                example:
+                  {
+                    player: Blue,
+                    movePiece: That piece can't move. Next player.
+                  }
         '404':
           description: Couldn't update position
