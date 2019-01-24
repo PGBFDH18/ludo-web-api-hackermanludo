@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "c933fb59-997d-4f3a-aec1-a0c6fd1efcf9",
+		"name": "LudoGameTest",
+		"description": "Tesing of Ludo web api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Start new game with 2 plaers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"2\",\"TestGame\",\"1\"]"
+				},
+				"url": {
+					"raw": "http://ludoapi.azurewebsites.net/api/Ludo/Game/creategame",
+					"protocol": "http",
+					"host": [
+						"ludoapi",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Ludo",
+						"Game",
+						"creategame"
+					]
+				},
+				"description": "Start a new game"
+			},
+			"response": []
+		},
+		{
+			"name": "Get game information",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/ludo/Game/gameinfo",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"ludo",
+						"Game",
+						"gameinfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Try to move piece nr 4 from active player",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/ludo/Game/updatepieceposition/4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"ludo",
+						"Game",
+						"updatepieceposition",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View saved games",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/ludo/Game/LoadGame/Dennis",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"ludo",
+						"Game",
+						"LoadGame",
+						"Dennis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Load Game with the name \"Dennis\"",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
