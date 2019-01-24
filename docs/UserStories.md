@@ -62,6 +62,8 @@ Database (SQL server) connected to C# project via Entity Framework. Data input i
 *HopefullyWorking* can extract all data from database to Entity Framework. Merging *HopefullyWorking* with *ApproveOrDie*
 Merging *TestSave* with *ApproveOrDie*.
 
+*2019-01-24:* Our goal was to send objects to the database. We changed approach and changed the database to One table and one collumn. The collumn contains all game info as one string. 
+
 
 
 
