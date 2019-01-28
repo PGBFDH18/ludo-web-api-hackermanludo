@@ -1,17 +1,10 @@
-Put your documentation in this folder!
+# WebAPI for Ludo game
 
-You can delete this file
+
 
 Status for main build:
 [![Build status](https://dev.azure.com/olssonolof/Hackerman%20Fia%20web%20api/_apis/build/status/Hackerman%20Fia%20web%20api-ASP.NET%20Core-CI)](https://dev.azure.com/olssonolof/Hackerman%20Fia%20web%20api/_build/latest?definitionId=3)
 
-
-
-# WebAPI for Ludo game
-
-## Database
-Create database (SQL). We start with creating the database and connect it to our classes and objects in our C# project.
-The database should not include gamelogic.
 
 ## API
 
@@ -31,7 +24,7 @@ We test the published API on Postman. Through the API we have created methods to
 
 
 
-**Save to SQL** - `POST`
+**Save to local JSON** - `POST`
 
 **Update saved game** - `PUT`
 
@@ -64,7 +57,7 @@ Merging *TestSave* with *ApproveOrDie*.
 
 *2019-01-24:* Our goal was to send objects to the database. We changed approach and changed the database to One table and one collumn. The collumn contains all game info as one string. 
 
-
+*2019-01-25:* Our goal to use SQL in our project failed. Instead we use a local JSON file for saved games.
 
 
 #### Multiplayer multiple devices
@@ -82,24 +75,22 @@ Handling strutucre of workload by using the built in *Boards*.
 
 Unit testing through *Builds* in *Pipelines*.
 
-![](https://gyazo.com/96a740d7aac683b367671da6a8c4bf97)
-
-
 
 ## GameEngine
 
 #### Add functionallity for saving
 Save game in json format.
-Data is saved locally untill user saves game. When game saved `POST` to SQL server. 
-`PUT`method 
+Data is kept in app untill user saves game. Then data is saved to a local JSON file.
 
 #### Logic for loading game
-Load game in json format.
-Data `GET` from SQL server to user. 
+Load game in json format. 
 
 #### Add function so you can finish
 
-~~New testbranch in GameEngine created. Possibly a lot of changes needed in GameEngine. *2019-01-21*~~
+- [x] New testbranch in GameEngine created. Possibly a lot of changes needed in GameEngine. *2019-01-21*
+
+## Console APP
+- [x] Create a console app to run Ludo game from API. 
 
 
 
@@ -107,15 +98,15 @@ Data `GET` from SQL server to user.
 
 ## Other
 
-~~Add comments in code~~
+- [x] Add comments in code
 
-~~YAML documentation~~
+- [x] YAML documentation
 
-Add GUI for GameEngine
+- [x] Add GUI for GameEngine
 
-Clean up documentation
+- [x] Clean up documentation
 
-Easteregg
+- [ ] Easteregg
 
 
 
