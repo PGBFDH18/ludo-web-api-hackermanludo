@@ -11,6 +11,8 @@ Status for main build:
 #### Link to published API
 http://ludoapi.azurewebsites.net/api/ludo/game/gameinfo
 
+
+
 #### Postman
 We test the published API on Postman. Through the API we have created methods to:
 
@@ -91,6 +93,9 @@ TBA
 
 ## Console APP
 - [x] Create a console app to run Ludo game from API. 
+
+## TestOfEngine
+- [x] In solution for LudoWebApi we have a project called TestOfEngine for a simple way of testing the functions of the model *GamSession*.
 
 
 
