@@ -54,7 +54,7 @@ namespace GameEngine
         {
             for (int i = 0; i < PieceList.Count; i++)
             {
-                if (PieceList[i] == piece)
+                if (PieceList[i].PieceName == piece.PieceName && PieceList[i].PlayerColor == piece.PlayerColor)
                 {
                     PieceList.RemoveAt(i);
                     return true;

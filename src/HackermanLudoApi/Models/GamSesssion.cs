@@ -83,7 +83,6 @@ namespace HackermanLudoApi.Models
 
         static public string[] MovePiece(int pieceNr)
         {
-            game.NextTurn();
             return game.MovePiece(pieceNr - 1);
         }
 
@@ -92,9 +91,9 @@ namespace HackermanLudoApi.Models
         {
             List<string> returnList = new List<string>();
             game.NextTurn();
+
             foreach (var item in game.PlayersList[game.ActivePlayer].Pieces)
             {
-                returnList.Add(game.NextTurn()[0] + "," + game.NextTurn()[1]);
                 if (item.InNest)
                 {
                     returnList.Add(item.PlayerColor + " " + item.PieceName + " " + " is in nest.");
@@ -118,6 +117,7 @@ namespace HackermanLudoApi.Models
                     }
                 }
             }
+            returnList.Add(game.LastDiceThrow + "," + game.PlayersList[game.ActivePlayer].Color);
             return returnList;
         }
     }

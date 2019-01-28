@@ -23,7 +23,7 @@ namespace HackermanLudoApi.Controllers
 
         // GET: api/Ludo/Game/games
 
-        [HttpGet("game")]
+        [HttpGet("games")]
         public List<string> Get(string getgames)
         {
             return GamSesssion.GetGame();
@@ -70,7 +70,14 @@ namespace HackermanLudoApi.Controllers
 
         }
 
+        // POST: api/Ludo/game/LoadGame
+        [HttpPost("SaveGame/")]
+        public string LoadGame()
+        {
 
+            GamSesssion.SaveGame(GamSesssion.game);
+            return $"Game {GamSesssion.game.GameName} is saved";
+        }
 
     }
 }

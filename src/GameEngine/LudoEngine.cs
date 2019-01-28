@@ -8,7 +8,7 @@ namespace GameEngine
     {
         public string GameName { get; set; }
         public int ActivePlayer = 0;
-        private int LastDiceThrow { get; set; }
+        public int LastDiceThrow { get; set; }
         private int nrOfPlayer;
         public bool OkToStart { get; set; }
         public int NrOfPlayer
