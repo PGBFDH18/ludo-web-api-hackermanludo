@@ -14,38 +14,38 @@ http://ludoapi.azurewebsites.net/api/ludo/game/gameinfo
 #### Postman
 We test the published API on Postman. Through the API we have created methods to:
 
-`POST` - create game sessions
+- [x] `POST` - create game sessions
 
-`GET` - get saved game sessions
+- [x] `GET` - get saved game sessions
 
-`GET` - get the game session you are currently playing
+- [x] `GET` - get the game session you are currently playing
 
-`GET` - load saved game
+- [x] `GET` - load saved game
 
 
 
-**Save to local JSON** - `POST`
+- [x] **Save to local JSON** - `POST`
 
-**Update saved game** - `PUT`
+- [x] **Update saved game** - `PUT`
 
-**Load saved game** - `GET`
+- [x] **Load saved game** - `GET`
 
-**Delete saved game** - `DELETE`
+- [x] **Delete saved game** - `DELETE`
 
-**Load game info each dicethrow** - `GET`
+- [x] **Load game info each dicethrow** - `GET`
 
 #### Path for pieces
-`GET:` *Who's turn, dice throw, position of pieces*
+- [x] `GET:` *Who's turn, dice throw, position of pieces*
 
-`PUT:` *Update piece position*
+- [x] `PUT:` *Update piece position*
 
 
 #### Path for game
-`GET:` *Get list of games*
+- [x] `GET:` *Get list of games*
 
-`POST:` *Create New game*
+- [x] `POST:` *Create New game*
 
-`DELETE:` *Get rid of game*
+- [x] `DELETE:` *Get rid of game*
 
 
 #### Connect database and API
@@ -66,24 +66,24 @@ TBA
 ## Azure
 
 #### API
-On Azure we have published API and database.
+- [x] On Azure we have published API and database.
 
 ## DevOps
-Handling structure of building application, API and database.
+- [x] Handling structure of building application, API and database.
 
-Handling strutucre of workload by using the built in *Boards*.
+- [x] Handling strutucre of workload by using the built in *Boards*.
 
-Unit testing through *Builds* in *Pipelines*.
+- [x] Unit testing through *Builds* in *Pipelines*.
 
 
 ## GameEngine
 
 #### Add functionallity for saving
-Save game in json format.
-Data is kept in app untill user saves game. Then data is saved to a local JSON file.
+- [x] Save game in json format.
+- [x] Data is kept in app untill user saves game. Then data is saved to a local JSON file.
 
 #### Logic for loading game
-Load game in json format. 
+- [x] Load game in json format. 
 
 #### Add function so you can finish
 
