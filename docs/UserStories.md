@@ -28,7 +28,7 @@ We test the published API on Postman. Through the API we have created methods to
 
 
 
-**Save to SQL** - `POST`
+**Save to local JSON** - `POST`
 
 **Update saved game** - `PUT`
 
@@ -61,7 +61,7 @@ Merging *TestSave* with *ApproveOrDie*.
 
 *2019-01-24:* Our goal was to send objects to the database. We changed approach and changed the database to One table and one collumn. The collumn contains all game info as one string. 
 
-
+*2019-01-25:* Our goal to use SQL in our project failed. Instead we use a local JSON file for saved games.
 
 
 #### Multiplayer multiple devices
@@ -79,27 +79,22 @@ Handling strutucre of workload by using the built in *Boards*.
 
 Unit testing through *Builds* in *Pipelines*.
 
-![](https://gyazo.com/96a740d7aac683b367671da6a8c4bf97)
-
-
 
 ## GameEngine
 
 #### Add functionallity for saving
 Save game in json format.
-Data is saved locally untill user saves game. When game saved `POST` to SQL server. 
-`PUT`method 
+Data is kept in app untill user saves game. Then data is saved to a local JSON file.
 
 #### Logic for loading game
-Load game in json format.
-Data `GET` from SQL server to user. 
+Load game in json format. 
 
 #### Add function so you can finish
 
 - [x] New testbranch in GameEngine created. Possibly a lot of changes needed in GameEngine. *2019-01-21*
 
 ## Console APP
-- [ ] Create a console app to run Ludo game from API. 
+- [x] Create a console app to run Ludo game from API. 
 
 
 
