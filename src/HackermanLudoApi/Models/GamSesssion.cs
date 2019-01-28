@@ -30,7 +30,7 @@ namespace HackermanLudoApi.Models
             }
             GameList.Add(gameToSave);
             var json = JsonConvert.SerializeObject(GameList.ToArray());
-            File.WriteAllText(@"c:/test/ludo.json", json);
+            File.WriteAllText(@"c:/windows/temp/ludo.json", json);
         }
 
 
@@ -50,9 +50,9 @@ namespace HackermanLudoApi.Models
 
         static public List<LudoEngine> ShowSavedGames()
         {
-            if (File.Exists(@"c:/test/ludo.json"))
+            if (File.Exists(@"c:/windows/temp/ludo.json"))
             {
-                using (var r = new StreamReader(@"c:/test/ludo.json"))
+                using (var r = new StreamReader(@"c:/windows/temp/ludo.json"))
                 {
                     var json = r.ReadToEnd();
                     var list = JsonConvert.DeserializeObject<List<LudoEngine>>(json);
