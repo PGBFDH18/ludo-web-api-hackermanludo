@@ -128,3 +128,24 @@ paths:
                   }
         '404':
           description: Couldn't update position
+  api/ludo/game/savegame:
+    post:
+      description: Saves the current game
+      summary: Saves the current game
+      responses:
+        '200':
+          description: Game was saved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  game:
+                    type: string
+                    description: Information if game was saved
+                example:
+                  {
+                    game: GameName was saved
+                  }
+        '404':
+          description: Game wasent saved
