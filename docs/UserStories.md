@@ -1,13 +1,10 @@
-Put your documentation in this folder!
+# WebAPI for Ludo game
 
-You can delete this file
+
 
 Status for main build:
 [![Build status](https://dev.azure.com/olssonolof/Hackerman%20Fia%20web%20api/_apis/build/status/Hackerman%20Fia%20web%20api-ASP.NET%20Core-CI)](https://dev.azure.com/olssonolof/Hackerman%20Fia%20web%20api/_build/latest?definitionId=3)
 
-
-
-# WebAPI for Ludo game
 
 ## Database
 Create database (SQL). We start with creating the database and connect it to our classes and objects in our C# project.
@@ -99,10 +96,10 @@ Data `GET` from SQL server to user.
 
 #### Add function so you can finish
 
-~~New testbranch in GameEngine created. Possibly a lot of changes needed in GameEngine. *2019-01-21*~~
+- [x] New testbranch in GameEngine created. Possibly a lot of changes needed in GameEngine. *2019-01-21*
 
 ## Console APP
-Create a console app to run Ludo game from API. 
+- [ ] Create a console app to run Ludo game from API. 
 
 
 
@@ -110,15 +107,15 @@ Create a console app to run Ludo game from API.
 
 ## Other
 
-~~Add comments in code~~
+- [x] Add comments in code
 
-~~YAML documentation~~
+- [x] YAML documentation
 
-Add GUI for GameEngine
+- [x] Add GUI for GameEngine
 
-Clean up documentation
+- [x] Clean up documentation
 
-Easteregg
+- [ ] Easteregg
 
 
 
