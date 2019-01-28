@@ -54,7 +54,7 @@ paths:
                   }
         '404':
           description: Couldn't create game
-  api/ludo/game/loadgame:
+  api/ludo/game/loadgame/gamename:
     post:
       description: Load saved game.
       summary: Loads the saved game.
