@@ -101,6 +101,9 @@ Data `GET` from SQL server to user.
 
 ~~New testbranch in GameEngine created. Possibly a lot of changes needed in GameEngine. *2019-01-21*~~
 
+## Console APP
+Create a console app to run Ludo game from API. 
+
 
 
 
