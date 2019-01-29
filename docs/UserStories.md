@@ -32,7 +32,7 @@ We test the published API on Postman. Through the API we have created methods to
 
 - [x] **Load saved game** - `GET`
 
-- [x] **Delete saved game** - `DELETE`
+- [ ] **Delete saved game** - `DELETE`
 
 - [x] **Load game info each dicethrow** - `GET`
 
@@ -47,7 +47,7 @@ We test the published API on Postman. Through the API we have created methods to
 
 - [x] `POST:` *Create New game*
 
-- [x] `DELETE:` *Get rid of game*
+- [ ] `DELETE:` *Get rid of game*
 
 
 #### Connect database and API
