@@ -7,6 +7,596 @@
 	},
 	"item": [
 		{
+			"name": "game",
+			"item": [
+				{
+					"name": "Get a list of all games.",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ludo/game/games",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ludo",
+								"game",
+								"games"
+							]
+						},
+						"description": "Get list of games."
+					},
+					"response": [
+						{
+							"name": "Couldn't get list.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/ludo/game/games",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"ludo",
+										"game",
+										"games"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "List of games",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/ludo/game/games",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"ludo",
+										"game",
+										"games"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"game\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Creates a new game.",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ludo/game/creategame",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ludo",
+								"game",
+								"creategame"
+							]
+						},
+						"description": "Create new game."
+					},
+					"response": [
+						{
+							"name": "Couldn't create game",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/ludo/game/creategame",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"ludo",
+										"game",
+										"creategame"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Game was created.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/ludo/game/creategame",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"ludo",
+										"game",
+										"creategame"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"player\": \"<string>\",\n \"diceThrow\": \"<integer>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Loads the saved game.",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ludo/game/loadgame/gamename",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ludo",
+								"game",
+								"loadgame",
+								"gamename"
+							]
+						},
+						"description": "Load saved game."
+					},
+					"response": [
+						{
+							"name": "Game was loaded.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/ludo/game/loadgame/gamename",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"ludo",
+										"game",
+										"loadgame",
+										"gamename"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"player\": \"<string>\",\n \"diceThrow\": \"<integer>\"\n}"
+						},
+						{
+							"name": "Couldn't create game",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/ludo/game/loadgame/gamename",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"ludo",
+										"game",
+										"loadgame",
+										"gamename"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get game information.",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ludo/game/gameinfo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ludo",
+								"game",
+								"gameinfo"
+							]
+						},
+						"description": "Get game information."
+					},
+					"response": [
+						{
+							"name": "Couldn't recieve information",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/ludo/game/gameinfo",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"ludo",
+										"game",
+										"gameinfo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Game information recieved.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/ludo/game/gameinfo",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"ludo",
+										"game",
+										"gameinfo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"gameInfo\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update piece position",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ludo/game/updatedpieceposition",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ludo",
+								"game",
+								"updatedpieceposition"
+							]
+						},
+						"description": "Update piece position"
+					},
+					"response": [
+						{
+							"name": "Couldn't update position",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/ludo/game/updatedpieceposition",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"ludo",
+										"game",
+										"updatedpieceposition"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Piece position updated",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/ludo/game/updatedpieceposition",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"ludo",
+										"game",
+										"updatedpieceposition"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"player\": \"<string>\",\n \"movePiece\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Saves the current game",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/ludo/game/savegame",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ludo",
+								"game",
+								"savegame"
+							]
+						},
+						"description": "Saves the current game"
+					},
+					"response": [
+						{
+							"name": "Game wasent saved",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/ludo/game/savegame",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"ludo",
+										"game",
+										"savegame"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Game was saved",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/ludo/game/savegame",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"ludo",
+										"game",
+										"savegame"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"game\": \"<string>\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Start new game with 2 plaers",
 			"request": {
 				"method": "POST",
@@ -92,6 +682,33 @@
 		},
 		{
 			"name": "View saved games",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/ludo/Game/game",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"ludo",
+						"Game",
+						"game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Load Game with the name \"Dennis\"",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -111,21 +728,6 @@
 						"LoadGame",
 						"Dennis"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Load Game with the name \"Dennis\"",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": ""
 				}
 			},
 			"response": []
