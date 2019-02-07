@@ -113,7 +113,8 @@ TBA
 ## TestOfEngine
 - [x] In solution for LudoWebApi we have a project called TestOfEngine for a simple way of testing the functions of the model *GamSession*.
 
-
+## Tests
+[x] Added Unit test to automaticly try out so the logic works as expected. When we push to Git the tests runs automatically on Azure Devops as seen on the screenshot on DevOps.
 
 
 
