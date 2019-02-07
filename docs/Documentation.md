@@ -16,13 +16,13 @@ The API was published on Azure Cloud services but has now been deleted.
 
 
 #### Postman
-We test the published API on Postman. Through the API we have created methods to:
 
 Created a team on Postman to share and collabare all the test for the Api.
 Loaded the API Yaml documentation in to the api and added local variables to test the api on both local adress and on the published API.
 
 ![Screenshot](https://github.com/PGBFDH18/ludo-web-api-hackermanludo/blob/master/docs/Images/Postman.PNG)
 
+We test the published API on Postman. Through the API we have created methods to:
 
 - [x] `POST` - create game sessions
 
@@ -57,7 +57,8 @@ Loaded the API Yaml documentation in to the api and added local variables to tes
 
 
 #### Connect database and API
-Database (SQL server) connected to C# project via Entity Framework. Data input in SQL server can be reached through HTTP method `POST` in C# project. Validation of correct data flow through Postman.
+~~Database (SQL server) connected to C# project via Entity Framework. Data input in SQL server can be reached through HTTP method `POST` in C# project. Validation of correct data flow through Postman.~~
+
 
 *2019-01-23:* Trying to extract data from database to Entity Framework Models. Due to risk of destroying app new branch *HopefullyWorking* created where different approaches can be tested. 
 *HopefullyWorking* can extract all data from database to Entity Framework. Merging *HopefullyWorking* with *ApproveOrDie*
@@ -65,7 +66,7 @@ Merging *TestSave* with *ApproveOrDie*.
 
 *2019-01-24:* Our goal was to send objects to the database. We changed approach and changed the database to One table and one collumn. The collumn contains all game info as one string. 
 
-*2019-01-25:* Our goal to use SQL in our project failed. Instead we use a local JSON file for saved games.
+#### *2019-01-25:* Our goal to use SQL in our project failed. Instead we use a local JSON file for saved games.
 
 
 #### Multiplayer multiple devices
