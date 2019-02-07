@@ -36,20 +36,17 @@ paths:
       parameters:
         - in: body
           name: game
-          description: The game to create.
+          description: The game to create. [numberOfPlayers, gameName, 1]
           schema:
             type: string[]
             required:
               - numberOfPlayers
               - gameName
-              - 1
-            properties:
-              numberOfPlayers:
-                type: string
-              gameName:
-                type: string
-              1:
-                type: string
+              - "1"
+            example:
+              [
+                numberOfPlayers, gameName, "1"
+              ]
       responses:
         '200':
           description: Game was created.
