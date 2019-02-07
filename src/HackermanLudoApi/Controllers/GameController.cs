@@ -65,7 +65,7 @@ namespace HackermanLudoApi.Controllers
 
         }
 
-        // POST: api/Ludo/game/LoadGame
+        // POST: api/Ludo/game/SaveGame
         [HttpPost("SaveGame/")]
         public string LoadGame()
         {

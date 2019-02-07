@@ -33,6 +33,23 @@ paths:
     post:
       description: Create new game.
       summary: Creates a new game.
+      parameters:
+        - in: body
+          name: game
+          description: The game to create.
+          schema:
+            type: string[]
+            required:
+              - numberOfPlayers
+              - gameName
+              - 1
+            properties:
+              numberOfPlayers:
+                type: string
+              gameName:
+                type: string
+              1:
+                type: string
       responses:
         '200':
           description: Game was created.
@@ -54,7 +71,7 @@ paths:
                   }
         '404':
           description: Couldn't create game
-  api/ludo/game/loadgame/gamename:
+  api/ludo/game/loadgame/{gamename}:
     post:
       description: Load saved game.
       summary: Loads the saved game.
@@ -103,7 +120,7 @@ paths:
                   }
         '404':
           description: Couldn't recieve information
-  api/ludo/game/updatedpieceposition:
+  api/ludo/game/updatedpieceposition/{pieceNumber}:
     put:
       description: Update piece position
       summary: Update piece position
